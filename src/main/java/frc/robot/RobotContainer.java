@@ -67,13 +67,15 @@ public class RobotContainer
             public void initialize() { climberSubsystem.retractPistons(); }
         });
 
-        oi.getButton(1, Constants.Buttons.RIGHT_BUMPER).whileTrue(new ShootCommand(shooterSubsystem, feederSubsystem, hopperSubsystem));
+        oi.getButton(1, Constants.Buttons.LEFT_BUMPER).whileTrue(new ShootCommand(shooterSubsystem, feederSubsystem, hopperSubsystem));
         oi.getButton(1, Constants.Buttons.X_BUTTON).whileTrue(new IntakeCommand(intakeSubsystem, hopperSubsystem, oi));
         //oi.getButton(1, Constants.Buttons.B_BUTTON).whileTrue(new OutTakeCommand(intakeSubsystem, hopperSubsystem, feederSubsystem));
         oi.getButton(1, Constants.Buttons.B_BUTTON).whileTrue(new OutTakeCommand(intakeSubsystem, hopperSubsystem));
-        oi.getButton(1, Constants.Buttons.A_BUTTON).whileTrue(new KickCommand(feederSubsystem));
-        oi.getPovButton(1, 0).onTrue(new RunCommand(intakeSubsystem::retractPistons));
-        oi.getPovButton(1, 180).onTrue(new RunCommand(intakeSubsystem::extendPistons));
+        oi.getButton(1, Constants.Buttons.RIGHT_BUMPER).whileTrue(new KickCommand(feederSubsystem));
+        oi.getButton(1, Constants.Buttons.Y_BUTTON).whileTrue(new RunCommand(intakeSubsystem::extendPistons));
+        oi.getButton(1, Constants.Buttons.A_BUTTON).whileTrue(new RunCommand(intakeSubsystem::retractPistons));
+        //oi.getPovButton(1, 0).onTrue(new RunCommand(intakeSubsystem::retractPistons));
+        //oi.getPovButton(1, 180).onTrue(new RunCommand(intakeSubsystem::extendPistons));
 
         LEDPattern pattern = (led, time) -> {
             time *= 2;
