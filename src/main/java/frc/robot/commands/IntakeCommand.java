@@ -27,13 +27,16 @@ public class IntakeCommand extends Command{
         this.m_hopper = m_hopper;
         this.m_feeder=null;
         this.m_oi = m_oi;
-        addRequirements(m_intake, m_hopper,m_feeder);
+        addRequirements(m_intake, m_hopper);
     }
     @Override
     public void initialize(){
         m_intake.setIntake(0);
         m_hopper.setHopper(0);
-        m_feeder.setFeeder(0);
+        if (m_feeder!=null){
+            m_feeder.setFeeder(0);
+        }
+        
     }
     @Override
     public void execute(){
@@ -41,16 +44,24 @@ public class IntakeCommand extends Command{
             m_intake.setIntake(0);
             m_hopper.setHopper(0.7);
             //jasper writes bad code
-            m_feeder.setFeeder(0.5);
+            if (m_feeder!=null){
+                m_feeder.setFeeder(0.5);
+            }
+            
         }
         else{
             m_intake.setIntake(0.7);
             m_hopper.setHopper(0.7);
             if(ballOccupied.get()){
                 //jasper writes more bad code
-                m_feeder.setFeeder(0.4);
+                if (m_feeder!=null){
+                    m_feeder.setFeeder(0.4);
+                }
             }else{
-                m_feeder.stop();
+                if (m_feeder!=null){
+                    m_feeder.stop();
+                }
+                
             }
         }
 
@@ -59,7 +70,10 @@ public class IntakeCommand extends Command{
     public void end(boolean Interrupted){
         m_intake.stopIntake();
         m_hopper.stopHopper();
-        m_feeder.stop();
+        if (m_feeder!=null){
+            m_feeder.stop();
+        }
+        
     }
     @Override
     public boolean isFinished(){
