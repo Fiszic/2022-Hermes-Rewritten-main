@@ -44,8 +44,10 @@ public final class Constants {
     public static final double DEADZONE_VALUE = 0.01;
 	public static final int NUMBER_OF_CONTROLLERS = 2;
 
-	public static final double DRIVE_SPEED = 0.85; //0.85;
-	public static final double ROTATION_SENSITIVITY = 0.65; //0.85;
+	//baby mode is 0.40 regular is 0.85
+	public static final double DRIVE_SPEED = 0.40; //0.85;
+	//rotation sensitivity baby mode is 0.40 regular is 0.65
+	public static final double ROTATION_SENSITIVITY = 0.40; //0.85;
     
 	public static final boolean pushballs = false;
     public enum Axes {
