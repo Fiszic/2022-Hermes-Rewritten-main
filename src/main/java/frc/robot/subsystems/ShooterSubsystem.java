@@ -29,7 +29,7 @@ public class ShooterSubsystem extends SubsystemBase{
     public void setShooter(double speed){
         if(!Constants.climbing){
         //ShooterMotor.set(speed);
-        ShooterMotor.set(-0.5);//switched from negative
+        ShooterMotor.set(-0.4);//switched from negative
         
         }else{
             ShooterMotor.set(0);
